@@ -149,6 +149,9 @@ use Didimo\Sms\Sms;
 
 $sms = new Sms('USER','PASSWORD');
 
+//Consultar en producción
+$sms->setEnviroment('live'); 
+
 $id='c366018b-97ba-4a78-8183-0d975bd2620b';
 $response = $sms->getMessageStatus($id);
 if($response->Status == 200) {
@@ -189,6 +192,10 @@ include_once('vendor/autoload.php');
 use Didimo\Sms\Sms;
 
 $sms = new Sms('USER','PASSWORD');
+
+//Consultar en producción
+$sms->setEnviroment('live'); 
+
 $response = $sms->getCredits();
 
 if($response->Status == 200) {
