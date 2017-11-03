@@ -1,0 +1,24 @@
+{
+    "name": "didimo/sms",
+    "description": "Send sms with didimo",
+    "keywords": ["didimo", "didimo sms", "sms"],
+    "homepage": "https://github.com/ssheduardo/didimo",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eduardo D.",
+            "email": "ssh.eduardo@gmail.com"
+        }
+    ],
+    "type": "library",
+    "require": {
+		"php": ">=5.4",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+	"autoload": {
+        "psr-4": {
+            "Didimo\\Sms\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
