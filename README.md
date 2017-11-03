@@ -32,6 +32,9 @@ include_once('vendor/autoload.php');
 use Didimo\Sms\Sms;
 
 $sms = new Sms('USER','PASSWORD');
+//Enviar sms desde producción
+$sms->setEnviroment('live'); 
+
 $response = $sms->createMessage('Prueba','34666666666','Esto es una prueba');
 if($response->Status == 200) {
     if($response->ResponseCode == 0 && $response->ResponseMessage == 'Operation Success') {
@@ -46,6 +49,12 @@ else {
 }
 
 ```
+> Tener en cuenta que para enviar sms de pruebas, tenéis que contactar por vuestro proveedor para que os de de alta. Bastará con cambiar setEnviorement a test
+
+```php
+$sms->setEnviroment('test'); 
+```
+
 > Nota: Podemos pasar un tercer parámetro para programar el envío del sms, dicho valor tiene que tener el siguiente formato Y-m-d\TH:i:s.
 
 ```php
@@ -76,6 +85,8 @@ include_once('vendor/autoload.php');
 use Didimo\Sms\Sms;
 
 $sms = new Sms('USER','PASSWORD');
+//Enviar sms desde producción
+$sms->setEnviroment('live'); 
 
 $messages = ['0034666666666' => 'Mensaje personalizado', '0034777777777' => 'Otro mensaje personalizado'];
 $response = $sms->createSend('Prueba',$messages);
