@@ -3,6 +3,10 @@ DIDIMO SMS - Web API
 
 Clase para enviar sms con la plataforma DIDIMO
 
+[![Latest Stable Version](https://poser.pugx.org/didimo/sms/v/stable)](https://packagist.org/packages/didimo/sms)
+[![Total Downloads](https://poser.pugx.org/didimo/sms/downloads)](https://packagist.org/packages/didimo/sms)
+[![Latest Unstable Version](https://poser.pugx.org/didimo/sms/v/unstable)](https://packagist.org/packages/didimo/sms)
+[![License](https://poser.pugx.org/didimo/sms/license)](https://packagist.org/packages/didimo/sms)
 
 ## Requerimientos mínimos
 
@@ -33,7 +37,7 @@ use Didimo\Sms\Sms;
 
 $sms = new Sms('USER','PASSWORD');
 //Enviar sms desde producción
-$sms->setEnviroment('live'); 
+$sms->setEnviroment('live');
 
 $response = $sms->createMessage('Prueba','34666666666','Esto es una prueba');
 if($response->Status == 200) {
@@ -52,7 +56,7 @@ else {
 > Tener en cuenta que para enviar sms de pruebas, tenéis que contactar por vuestro proveedor para que os de de alta. Bastará con cambiar setEnviorement a test
 
 ```php
-$sms->setEnviroment('test'); 
+$sms->setEnviroment('test');
 ```
 
 > Nota: Podemos pasar un tercer parámetro para programar el envío del sms, dicho valor tiene que tener el siguiente formato Y-m-d\TH:i:s.
@@ -86,18 +90,18 @@ use Didimo\Sms\Sms;
 
 $sms = new Sms('USER','PASSWORD');
 //Enviar sms desde producción
-$sms->setEnviroment('live'); 
+$sms->setEnviroment('live');
 
 $messages = ['0034666666666' => 'Mensaje personalizado', '0034777777777' => 'Otro mensaje personalizado'];
 $response = $sms->createSend('Prueba',$messages);
 
 if($response->Status == 200) {
     if($response->ResponseCode == 0 && $response->ResponseMessage == 'Operation Success') {
-        echo 'Enviado correctamente';        
+        echo 'Enviado correctamente';
     }
     else {
         echo 'Error, no se pudo enviar el sms'.;
-        
+
     }
 }
 else {
@@ -150,13 +154,13 @@ use Didimo\Sms\Sms;
 $sms = new Sms('USER','PASSWORD');
 
 //Consultar en producción
-$sms->setEnviroment('live'); 
+$sms->setEnviroment('live');
 
 $id='c366018b-97ba-4a78-8183-0d975bd2620b';
 $response = $sms->getMessageStatus($id);
 if($response->Status == 200) {
     if($response->ResponseCode == 0 && $response->ResponseMessage == 'Operation Success') {
-        echo "Estatus: ".$response->StatusDescription;        
+        echo "Estatus: ".$response->StatusDescription;
     }
     else {
         echo 'Error al obtener estatus';
@@ -194,13 +198,13 @@ use Didimo\Sms\Sms;
 $sms = new Sms('USER','PASSWORD');
 
 //Consultar en producción
-$sms->setEnviroment('live'); 
+$sms->setEnviroment('live');
 
 $response = $sms->getCredits();
 
 if($response->Status == 200) {
     if($response->ResponseCode == 0 && $response->ResponseMessage == 'Operation Success') {
-        echo "Total saldo: ".$response->Credits;        
+        echo "Total saldo: ".$response->Credits;
     }
     else {
         echo 'Error al obtener saldo';
