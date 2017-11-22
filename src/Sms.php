@@ -27,7 +27,7 @@ class Sms{
 
     protected $client;
 
-    protected $_setEnviroment;
+    protected $_setEnvironment;
 
     /**
      *
@@ -39,24 +39,24 @@ class Sms{
         $this->user = $user;
         $this->password = $password;
         $this->client = new Client();
-        $this->_setEnviroment='https://preprosms.didimo.es/';
+        $this->_setEnvironment='https://preprosms.didimo.es/';
     }
 
     /**
-     * Set enviroment
-     * @param string $enviroment test or live
+     * Set environment
+     * @param string $environment test or live
      * @throws Exception
      */
 
-    public function setEnviroment($enviroment='test')
+    public function setEnvironment($environment='test')
     {
-        if(trim($enviroment) == 'live'){
+        if(trim($environment) == 'live'){
             //Live
-            $this->_setEnviroment='https://sms.didimo.es/';
+            $this->_setEnvironment='https://sms.didimo.es/';
         }
         else {
             //Test
-            $this->_setEnviroment ='https://preprosms.didimo.es/';
+            $this->_setEnvironment ='https://preprosms.didimo.es/';
         }
 
     }
@@ -72,7 +72,7 @@ class Sms{
         $message_sender = array();
         $index = 0;
 
-        $url = $this->_setEnviroment.'wcf/Service.svc/rest/CreateSend';
+        $url = $this->_setEnvironment.'wcf/Service.svc/rest/CreateSend';
 
         if(is_array($messages)) {
             foreach($messages as $mobile => $message){
@@ -118,7 +118,7 @@ class Sms{
      */
     public function createMessage($sender='',$mobile='', $message='', $scheduledate='')
     {
-        $url = $this->_setEnviroment.'wcf/Service.svc/rest/CreateMessage';
+        $url = $this->_setEnvironment.'wcf/Service.svc/rest/CreateMessage';
 
         $json = array(
             'UserName'      => $this->user,
@@ -154,7 +154,7 @@ class Sms{
      */
     public function ping()
     {
-        $url = $this->_setEnviroment.'wcf/Service.svc/rest/Ping';
+        $url = $this->_setEnvironment.'wcf/Service.svc/rest/Ping';
 
         $json = array(
             'UserName'      => $this->user,
@@ -186,7 +186,7 @@ class Sms{
      */
     public function getMessageStatus($id='')
     {
-        $url = $this->_setEnviroment.'wcf/Service.svc/rest/GetMessageStatus';
+        $url = $this->_setEnvironment.'wcf/Service.svc/rest/GetMessageStatus';
 
         $json = array(
             'UserName'      => $this->user,
@@ -218,7 +218,7 @@ class Sms{
     public function getCredits()
     {
         try {
-            $url = $this->_setEnviroment.'wcf/Service.svc/rest/GetCredits';
+            $url = $this->_setEnvironment.'wcf/Service.svc/rest/GetCredits';
 
             $json = array(
                 'UserName'      => $this->user,
